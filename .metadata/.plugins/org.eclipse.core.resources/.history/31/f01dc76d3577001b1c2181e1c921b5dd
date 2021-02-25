@@ -1,0 +1,28 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import service.ExpenseService;
+
+@WebServlet("/register")
+public class RegisterController extends HttpServlet{
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		
+		String regdate = request.getParameter("regdate");
+		int price = Integer.parseInt(request.getParameter("price"));
+		String content = request.getParameter("content");
+		
+		
+		ExpenseService es = new ExpenseService();
+		es.append(regdate, price, content);
+	}
+}

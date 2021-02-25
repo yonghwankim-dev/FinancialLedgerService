@@ -1,0 +1,115 @@
+package ex2;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DateUtil;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import entity.Student;
+
+public class ExcelManager {
+	
+	public static void writeXlsx(String fileName)
+	{
+		XSSFWorkbook workbook = new XSSFWorkbook(); // 새 엑셀 생성
+		XSSFSheet sheet = workbook.createSheet("sheet0");	// 새 시트 생성
+		XSSFRow row = sheet.createRow(0);	// 엑셀의 행은 0번부터 시작
+		XSSFCell cell = row.createCell(0);	// 행의 셀은 0번부터 시작
+		cell.setCellValue("테스트 데이터");	// 생성한 셀에 데이터 삽입
+		try {
+			FileOutputStream fos = new FileOutputStream("./res/"+fileName+".xlsx");
+			workbook.write(fos);
+			fos.close();
+			System.out.println("엑셀파일 생성 성공");
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+			System.out.println("엑셀파일생성실패");
+		}
+	}
+	
+	public static List<Student> getStudentList()
+	{
+		List<Student> studentList = new ArrayList<Student>();
+		
+		String filePath="./res/student.xlsx";
+		InputStream inputStream = new FileInputStream(filePath);
+		
+		// 엑셀 로드
+		Workbook workbook = WorkbookFactory.create(inputStream);
+		
+		// 시트 로드 0, 첫번째 시트 로드
+		Sheet sheet = workbook.getSheetAt(0);
+		Iterator<Row> rowItr = sheet.iterator();
+		
+		// 행만큼 반복
+		while(rowItr.hasNext())
+		{
+			Student student = new Student();
+			Row row = rowItr.next();
+			//첫번재 행이 헤더인 경우 스킵, 2번째 행부터 data 로드
+			if(row.getRowNum()==0)
+			{
+				continue;
+			}
+			Iterator<Cell> cellItr = row.cellIterator();
+			// 한 행이 한열씩 읽기 (셀 읽기)
+			while(cellItr.hasNext())
+			{
+				Cell cell = cellItr.next();
+				int index = cell.getColumnIndex();
+				switch(index) {
+				case 0:	//번호
+					// 셀이 숫자형인 경우 Double형으로 변환 후 int형으로 변환
+					student.setId(((Double) getValueFromCell(cell)).intValue());
+					break;
+				case 1: //성명
+					student.setName((String)getValueFromCell(cell));
+					break;
+				case 2: //생년월일
+					student.setBirthDate((Date)getValueFromCell(cell));
+					break;
+				}
+			}
+			studentList.add(student);
+		}
+		return studentList;
+	}
+
+	private static Object getValueFromCell(Cell cell) {
+		// TODO Auto-generated method stub
+		switch(cell.getCellType())
+		{
+		case STRING:
+			return cell.getStringCellValue();
+		case BOOLEAN:
+			return cell.getBooleanCellValue();
+		case NUMERIC:
+			if(DateUtil.isCellDateFormatted(cell))
+			{
+				return cell.getDateCellValue();
+			}
+			return cell.getNumericCellValue();
+		case FORMULA:
+			return cell.getCellFormula();
+		case BLANK:
+			return "";
+		default:
+			return "";
+		}
+	}
+}

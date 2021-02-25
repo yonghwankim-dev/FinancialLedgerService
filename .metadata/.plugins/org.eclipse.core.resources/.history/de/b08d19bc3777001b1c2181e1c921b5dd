@@ -1,0 +1,27 @@
+package service;
+
+import java.io.IOException;
+import java.util.Date;
+
+import org.apache.poi.EncryptedDocumentException;
+
+import excel.ExcelManager;
+
+public class ExpenseService {
+	/**
+	 * 지출 엑셀파일을 오픈하여 지출 내용을 추가한다.
+	 * @param regdate 날짜
+	 * @param price	    가격
+	 * @param content 내용
+	 * @return
+	 * @throws IOException 
+	 * @throws EncryptedDocumentException 
+	 */
+	public void append(Date regdate, int price, String content) throws EncryptedDocumentException, IOException
+	{
+		Object[] f_vals = {regdate,price,content};
+		System.out.println("//////////////////");
+		ExcelManager em = new ExcelManager();
+		em.appendExcelFile(f_vals);
+	}
+}

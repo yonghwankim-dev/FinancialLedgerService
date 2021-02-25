@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+    <fullyQualifiedTypeName name="org.apache.poi.hssf.usermodel.HSSFWorkbook"/>
+    <fullyQualifiedTypeName name="org.apache.poi.hssf.usermodel.HSSFSheet"/>
+    <fullyQualifiedTypeName name="org.apache.poi.hssf.usermodel.HSSFRow"/>
+    <fullyQualifiedTypeName name="org.apache.poi.hssf.usermodel.HSSFCellStyle"/>
+    <fullyQualifiedTypeName name="org.apache.poi.hssf.usermodel.HSSFCell"/>
+    <fullyQualifiedTypeName name="com.microsoft.schemas.office.visio.x2012.main.CellType"/>
+    <fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.CellType"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFWorkbook"/>
+    <fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFSheet"/>
+    <fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFRow"/>
+    <fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFCell"/>
+    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+</qualifiedTypeNameHistroy>
