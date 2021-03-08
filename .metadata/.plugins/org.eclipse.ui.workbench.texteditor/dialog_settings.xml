@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="/"/>
+		<item key="selection" value="createHel"/>
 		<list key="findhistory">
+			<item value="CreateHel"/>
+			<item value="Create"/>
+			<item value="sheet"/>
 			<item value="\\"/>
 			<item value="FileInputStream fis = new FileInputStream(&quot;C:\\Users\\qkdlf\\Project\\back-end\\FinancialLedgerService\\ExcelProject\\res\\test.xlsx&quot;);"/>
 		</list>

@@ -1,9 +1,0 @@
-package service;
-
-public class ExpenseService {
-	public boolean append(Date regdate, int price, String content)
-	{
-		
-		return false;
-	}
-}

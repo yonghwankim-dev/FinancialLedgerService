@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import excel.ExcelManager;
 import service.ExpenseService;
 
 @WebServlet("/register")
@@ -33,6 +34,8 @@ public class RegisterController extends HttpServlet{
 		int price = Integer.parseInt(request.getParameter("price"));
 		String content = request.getParameter("content");
 		
-		new ExpenseService().append(regdate, price, content);
+		ExpenseService service = new ExpenseService();
+		service.append(request, regdate, price, content);
+		
 	}
 }

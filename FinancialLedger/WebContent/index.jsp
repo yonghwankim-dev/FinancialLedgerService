@@ -13,7 +13,7 @@
 		  <div class="container">
 		    <h1>가계부</h1>
 		    <hr>
-		
+			
 		    <label for="regdate"><b>날짜</b></label>
 		    <input type="text" placeholder="2021-01-01" name="regdate" id="regdate" required>
 		    

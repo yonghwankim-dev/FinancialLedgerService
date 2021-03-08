@@ -5,11 +5,9 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/res"/>
-                
-        <property name="context-root" value="FinancialLedger"/>
                 
         <property name="java-output-path" value="/FinancialLedger/build/classes"/>
+        <property name="context-root" value="FinancialLedger"/>
             
     </wb-module>
     
